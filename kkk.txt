@@ -1,0 +1,298 @@
+#include <windows.h>
+#include <stdio.h>
+
+int main(void) {
+	
+	HDC hdc = GetWindowDC(GetForegroundWindow());
+
+	char c;
+
+	printf("명령어를 입력하시오(r 또는 c)");
+	scanf_s("%c", &c);
+
+	if (c == 'r') {
+		Rectangle(hdc, 100, 100, 200, 200);
+	}
+	else if (c == 'c') {
+		Ellipse(hdc, 100, 100, 200, 200);
+	}
+	else {
+		printf("잘못된 명령어입니다. \n");
+	}
+	
+
+
+	return 0;
+}
+
+--------------------------------------------------------------------
+
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void) {
+	
+	int user, computer;
+
+	printf("가위, 바위, 보 게임에 오신 것을 환영합니다.\n");
+	printf("하나를 선택하세요(가위-0, 바위=1, 보-2):");
+	scanf_s("%d", &user);
+
+	computer = rand() % 3;
+	printf("사용자 = %d\n", user);
+	printf("컴퓨터 = %d\n", computer);
+
+	if ((user + 1) % 3 == computer)
+		printf("컴퓨터 승리\n");
+	else if (user == computer)
+		printf("비겼습니다\n");
+	else
+		printf("사용자 승리\n");
+	
+	
+
+
+	return 0;
+}
+
+
+
+------------------------------------------------------
+
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void) {
+	
+	int x;
+
+	switch (x) {
+	case(-1):
+		num--;
+	case(1):
+		num++;
+	default:
+			num = 0;
+
+	}
+
+	return 0;
+}
+
+
+---------------------------------------------------------------
+
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void) {
+	
+	int i;
+
+	printf("정수를 입력하시오:");
+	scanf_s("%d", &i);
+
+	if ((i % 2) == 0)
+		printf("%d는 짝수입니다.", i);
+	else
+		printf("%d는 홀수입니다.", i);
+
+	return 0;
+}
+
+
+--------------------------------------------------------------------------------
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void) {
+	
+	char c;
+
+	printf("신호등의 색깔 입력 (R, G, Y):");
+	scanf_s("%c", &c);
+
+	if (c == 'R')
+		printf("정지!");
+	else if (c == 'G')
+		printf("주의!");
+	else if (c == 'Y')
+		printf("진행!");
+
+	return 0;
+}
+
+-----------------------------------------------------------------------------
+
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void) {
+
+	int x, y;
+
+	printf("정수를 입력하시오:");
+	scanf_s("%d %d", &x, &y);
+
+	if (x > y) {
+		printf("두수의 합은 %d입니다.\n", x + y);
+		printf("두수의 차는 %d입니다.\n", x - y);
+	}
+	else {
+		printf("두수의 합은 %d입니다.\n", y + x);
+		printf("두수의 차는 %d입니다.\n", y - x);
+	}
+
+	return 0;
+}
+
+
+-------------------------------------------------------------------------------
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void) {
+
+	int x, y, z;
+
+	printf("삼각형의 세 변을 입력하시요:");
+	scanf_s("%d %d %d", &x, &y, &z);
+
+	if (x == y == z)
+		printf("정삼각형");
+	else if (x == y && y!= z || x != y && y == z || x == z && z != y)
+		printf("이등변삼각형");
+	else
+		printf("일반삼각형");
+	return 0;
+}
+
+
+----------------------------------------------------------------------------------------------
+
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void) {
+
+	int money, A, B, C, D;
+	int num;
+
+	printf("과세 표준을 입력하시오(만원):");
+	scanf_s("%d", &money);
+
+	if (money <= 1000) {
+		money *= 0.08;
+		printf("소득세는 % d입니다.", money);
+	}
+
+	else if (money > 1000 && money <= 4000) {
+		A = 1000 * 0.08;
+		money -=1000;
+		B = money * 0.17;
+		num = A + B;
+		printf("소득세는 %d입니다.", num);
+	}
+
+	else if (money > 4000 && money <= 8000) {
+		A = 1000 * 0.08;
+		money -= 1000;
+		B = money * 0.17;
+		money -= 3000;
+		C = money * 0.26;
+		num = A + B + C;
+		printf("소득세는 %d입니다.", num);
+	}
+
+	else {
+		A = 1000 * 0.08;
+		money -= 1000;
+		B = money * 0.17;
+		money -= 3000;
+		C = money * 0.26;
+		money -= 4000;
+		D = money * 0.35;
+		num = A + B + C + D;
+		printf("소득세는 %d입니다.", num);
+	}
+
+	return 0;
+}
+
+
+--------------------------------------------------------------------------
+
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void) {
+
+	int first, second, report;
+
+	printf("중간 고사 점수를 입력하시오:");
+	scanf_s("%d", &first);
+
+	printf("기말 고사 점수를 입력하시오:");
+	scanf_s("%d", &second);
+
+	report = (first + second) / 2;
+
+	if (report >= 90)
+		printf("당신의 학점은 A학점입니다.");
+	else if (report >= 80)
+		printf("당신의 학점은 B학점입니다.");
+	else if (report >= 70)
+		printf("당신의 학점은 C학점입니다.");
+	else if (report >= 60)
+		printf("당신의 학점은 D학점입니다.");
+	else
+		printf("당신의 학점은 E학점입니다.");
+
+	return 0;
+}
+
+
+---------------------------------------------------------------------------
+
+
+#include <math.h>
+#include <stdio.h>
+
+int main(void) {
+
+	double a, b, c;
+	double num, num2;
+
+	printf("계수 a를 입력하시오 :");
+	scanf_s("%lf", &a);
+	printf("계수 b를 입력하시오 :");
+	scanf_s("%lf", &b);
+	printf("계수 c를 입력하시오 :");
+	scanf_s("%lf", &c);
+
+	if (a == 0) {
+		num = -c / b;
+		printf("위의 이차 방정식의 근은 %lf입니다.", num);
+	}
+
+	else if (b * b - 4 * a * c < 0) {
+		printf("실근이 존재하지 않습니다.");
+	}
+
+	else {
+		num = (-b + sqrt(b * b -4 * a * c)) / (2 * a);
+		num2 = (-b - sqrt(b * b -4 * a * c)) / (2 * a);
+		printf("위의 이차방정식의 실근은 %lf과 %lf입니다.", num, num2);
+	}
+		
+
+	return 0;
+}
